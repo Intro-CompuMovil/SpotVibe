@@ -24,6 +24,8 @@ Soy Felipe, una persona con mucha ambición y pasión por lo que me gusta, y me 
 ## Sobre SpotVibe
  
 ## Casos de uso
+![a1353fec-1f28-49ed-b310-70ce70adfc98](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/e72f7961-8ded-49b1-ba0f-358f4591fc46)
+
  
 ## Mockups
  
@@ -41,7 +43,7 @@ Estamos abiertos a colaboraciones. Si estás interesado en contribuir al proyect
  
 ## Contacto
  
-Si tienes preguntas o quieres ponerte en contacto con nosotros, no dudes en escribirnos a [nuestro correo electrónico](mailto:email@example.com).
+Si tienes preguntas o quieres ponerte en contacto con nosotros, no dudes en escribirnos a alguno de nuestros correos [lopezcg@javeriana.edu.co] [FELIPE-LONDONO@JAVERIANA.EDU.CO] [santiago.guerrerod@javeriana.edu.co]
  
 ---
  
