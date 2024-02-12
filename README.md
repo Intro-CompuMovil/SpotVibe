@@ -8,13 +8,13 @@ SpotVibe es una aplicación para facilitarle la vida tanto al consumidor como al
  <p align="center">
  <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8" width="350px" alt="Foto de Carlos">
   </p>
-
+Un futuro ingeniero, con ganas aprender de todo, me gusta el área de desarrollo tanto web como móvil, por el momento enfoncado en freelance
 <h3 align="center">Felipe Londoño</h3>
  <p align="center">
  <img src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/43fc6888-8249-4c90-b0a9-2759159ef937" width="350px" alt="Foto de felipe">
  </p>
 
-*Breve descripción...*
+Soy Felipe, una persona con mucha ambición y pasión por lo que me gusta, y me gusta mucho el area comercial y de eficiencia en una empresa, también soy jugador de voleibol casual y proximo emprendedor
  
 <h3 align="center">Santiago Guerrero</h3>
  <p align="center">
@@ -23,7 +23,7 @@ SpotVibe es una aplicación para facilitarle la vida tanto al consumidor como al
  
 ## Sobre SpotVibe
  
-*Aquí puedes añadir una descripción general del proyecto, mencionando los objetivos, qué problemas busca resolver, y cualquier otro detalle relevante sobre lo que hace único a SpotVibe.*
+## Casos de uso
  
 ## Mockups
  
