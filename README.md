@@ -33,16 +33,39 @@ Soy Felipe, una persona con mucha ambición y pasión por lo que me gusta, y me 
 ## Mockups
  
 A continuación, se presentan algunos mockups de nuestra aplicación para dar una idea de cómo se ve y funciona SpotVibe:
- 
-![Mockup 1](link-al-mockup-1.jpg)
-*Descripción del Mockup 1*
- 
-![Mockup 2](link-al-mockup-2.jpg)
-*Descripción del Mockup 2*
- 
-## Cómo contribuir
- 
-Estamos abiertos a colaboraciones. Si estás interesado en contribuir al proyecto, por favor revisa nuestras [guías de contribución](link-a-las-guías).
+<h3 align="center">Pantalla iniciar sesión</h3>
+ <p align="center">
+ <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/8159fee3-22c5-4df7-96f4-37965dc9454a" width="350px" alt="Iniciar sesión">
+  </p>
+
+
+<h3 align="center">Pantalla Problemas al iniciar sesión</h3>
+ <p align="center">
+ <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/f9bd966f-a7ad-4bae-8c4a-eb67b5c387d9" width="350px" alt="Problemas inicio">
+  </p>
+
+<h3 align="center">Pantalla Crear cuenta</h3>
+ <p align="center">
+ <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/00894a34-2485-4f18-a9e8-f2b7d309b51b" width="350px" alt="Crear cuenta">
+  </p>
+<h3 align="center">Pantalla Seleccionar preferencias</h3>
+ <p align="center">
+ <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/34983177-11a4-4bd9-a400-b3dd59dfd5a1" width="350px" alt="Preferencias">
+  </p>
+
+
+<h3 align="center">Pantalla Principal</h3>
+ <p align="center">
+ <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a5f5a2c4-7bb8-4257-badc-1bb586f4ab0c" width="350px" alt="Principal">
+  </p>
+
+
+<h3 align="center">Pantalla Mapa Eventos</h3>
+ <p align="center">
+ <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/4cc73975-3b9b-45af-b235-73851ec055b3" width="350px" alt="Mapa">
+  </p>
+
+
  
 ## Contacto
  
