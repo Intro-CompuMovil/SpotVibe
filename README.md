@@ -8,7 +8,7 @@ SpotVibe es una aplicación para facilitarle la vida tanto al consumidor como al
  <p align="center">
  <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8" width="350px" alt="Foto de Carlos">
   </p>
-Un futuro ingeniero, con ganas aprender de todo, me gusta el área de desarrollo tanto web como móvil, por el momento enfoncado en freelance
+Un futuro ingeniero, con ganas aprender de todo, me gusta el área de desarrollo tanto web como móvil, con algo de experiencia en freelance y abierto a todo.
 <h3 align="center">Felipe Londoño</h3>
  <p align="center">
  <img src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/43fc6888-8249-4c90-b0a9-2759159ef937" width="350px" alt="Foto de felipe">
@@ -20,13 +20,16 @@ Soy Felipe, una persona con mucha ambición y pasión por lo que me gusta, y me 
  <p align="center">
  <img src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/0f5210fb-2861-4f81-ae4e-65ebbc6ff621" width="350px" alt="Foto de felipe">
  </p>
+ Soy Santiago, un joven con muchas ganas de aprender cosas nuevas y con sus metas claras. Amante del futbol, de los carros y de los videojuegos.
  
 ## Sobre SpotVibe
  
-## Casos de uso
+## Diagrama de casos de uso
 ![a1353fec-1f28-49ed-b310-70ce70adfc98](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/e72f7961-8ded-49b1-ba0f-358f4591fc46)
 
- 
+## Diagrama de clases
+![98ab3e83-23be-4f60-939f-0b47c68236d8](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/9082748e-8e62-40af-a085-721befcb8516)
+
 ## Mockups
  
 A continuación, se presentan algunos mockups de nuestra aplicación para dar una idea de cómo se ve y funciona SpotVibe:
