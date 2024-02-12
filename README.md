@@ -3,20 +3,23 @@
 Bienvenido al repositorio oficial de SpotVibe .
  
 ## Equipo
- 
-### Carlos Gabriel Lopez
-![Foto Carlos](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8)
-*Breve descripción...*
- <img src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8" width="200px" alt="Foto de Santiago">
-### Felipe Londoño
-![Foto Felipe](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/43fc6888-8249-4c90-b0a9-2759159ef937)
+  
+<h3 align="center">Carlos Gabriel López M.</h3>
+ <p align="center">
+ <img   src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8" width="350px" alt="Foto de Carlos">
+  </p>
 
+<h3 align="center">Felipe Londoño</h3>
+ <p align="center">
+ <img src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/43fc6888-8249-4c90-b0a9-2759159ef937" width="350px" alt="Foto de felipe">
+ </p>
 
 *Breve descripción...*
  
-### Santiago Guerrero
-![Foto de Santiago](link-a-la-foto-de-santiago.jpg)
-*Breve descripción...*
+<h3 align="center">Santiago Guerrero</h3>
+ <p align="center">
+ <img src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/0f5210fb-2861-4f81-ae4e-65ebbc6ff621" width="350px" alt="Foto de felipe">
+ </p>
  
 ## Sobre SpotVibe
  
