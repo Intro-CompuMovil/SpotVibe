@@ -7,7 +7,7 @@ Bienvenido al repositorio oficial de SpotVibe .
 ### Carlos Gabriel Lopez
 ![Foto Carlos](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8)
 *Breve descripción...*
- <img src="[link-a-la-foto-de-santiago.jpg](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8)" width="200px" alt="Foto de Santiago">
+ <img src="https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/a7efed85-78ca-4fad-b7af-05726b8cd2b8" width="200px" alt="Foto de Santiago">
 ### Felipe Londoño
 ![Foto Felipe](https://github.com/Intro-CompuMovil/SpotVibe/assets/124104040/43fc6888-8249-4c90-b0a9-2759159ef937)
 
