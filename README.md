@@ -1,6 +1,6 @@
 # SpotVibe por Fesaca SA
 
-Bienvenido al repositorio oficial de SpotVibe .
+SpotVibe es una aplicación para facilitarle la vida tanto al consumidor como al anunciante. Es una aplicación donde un dueño de un negocio puede generar un evento en sus establecimientos y que las personas entren a Spot Vibe y puedan reservar un cupo en el evento. Para ejemplificar el uso de la aplicación, un  dueño de un local de comida rápida desea hacer un concurso de quien puede comer más. Lo que haría normalmente sería utilizar sus redes sociales para promocionar el evento y generar reservas por el mismo por un medio de mensajeria. Ahora todo es más fácil con SpotVibe, ya que simplemente, generará un evento en SpotVibe para que a la gente que le interese le aparezca dentro de la aplicación y pueda reservar su cupo en el evento. Ahora por parte del usuario, lo único que tendrá que hacer es entrar a la aplicación y escoger sus preferencias de evento, y dentro podrá buscar eventos de su interés a los que pueda reservar su visita.
  
 ## Equipo
   
