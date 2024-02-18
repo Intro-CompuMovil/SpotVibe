@@ -74,3 +74,4 @@ Si tienes preguntas o quieres ponerte en contacto con nosotros, no dudes en escr
 ---
  
 Gracias por visitar nuestro proyecto. ¡Esperamos que te guste SpotVibe tanto como a nosotros nos gusta desarrollarlo!
+
