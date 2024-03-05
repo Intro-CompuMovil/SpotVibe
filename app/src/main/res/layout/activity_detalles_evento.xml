@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetallesEvento"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/naranja"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/textvieweventodetalles"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="asasd "
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:gravity="center"></TextView>
+        <TextView
+            android:id="@+id/textviewautordetalles"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="3424232432342342"
+            android:textColor="@color/white"
+            android:textStyle="italic|bold"
+            android:gravity="center"></TextView>
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+    <TextView
+        android:id="@+id/textviewdescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:text="sadasdsadfjo"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+
+
+        ></TextView>
+    <Button
+        android:id="@+id/botoninscribirsealevento"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Inscribirme al evento"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="@color/naranja"
+
+        ></Button>
+
+</LinearLayout>
