@@ -1,14 +1,16 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
 
     <View
-        android:id="@+id/Titulo"
+        android:id="@+id/Encabezado"
         android:layout_width="wrap_content"
         android:layout_height="140dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="60dp"
         android:background="@color/naranja" />
 
     <ImageView
@@ -21,7 +23,7 @@
         />
 
     <TextView
-        android:id="@+id/tv_forgot_password"
+        android:id="@+id/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/back_icon"
@@ -35,7 +37,7 @@
         android:id="@+id/checkBox"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Titulo"
+        android:layout_below="@+id/Encabezado"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
         android:text="Restaurante"
@@ -97,7 +99,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkBox4"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text="Maquillaje"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text="Videojuegos"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
         android:background="@color/naranja"
         android:text="Maquillaje"
         android:textColor="@color/white"
@@ -107,7 +133,7 @@
         android:id="@+id/button"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/checkBox5"
+        android:layout_below="@+id/checkBox7"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/naranja"
         android:text="Next"
