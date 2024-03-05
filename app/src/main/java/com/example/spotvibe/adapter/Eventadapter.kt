@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spotvibe.Evento
 import com.example.spotvibe.R
 
-class Eventadapter (private val listaEventos:List<Evento>): RecyclerView.Adapter<EventViewholder> {
+class Eventadapter (private val listaEventos:List<Evento>):
+    RecyclerView.Adapter<EventViewholder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewholder {
         val layoutInflater=LayoutInflater.from(parent.context)
-        return EventViewholder(layoutInflater.inflate(R.layout.item_event),parent,false)
+        return EventViewholder(layoutInflater.inflate(R.layout.item_event,parent,false))
 
     }
 

@@ -1,3 +1,3 @@
 package com.example.spotvibe
 
-class Evento (val name:String, val Autor, val photo)
+data class Evento (val name:String, val Autor:String, val photo:String)

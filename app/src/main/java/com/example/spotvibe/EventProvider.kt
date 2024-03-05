@@ -2,7 +2,7 @@ package com.example.spotvibe
 
 class EventProvider {
     companion object{
-        val listaEventos = listOf(
+        val listaEventos = listOf<Evento>(
             Evento("Concierto de Rock", "Juan Pérez", "url_photo_1"),
             Evento("Exposición de Arte Moderno", "Ana Gómez", "url_photo_2"),
             Evento("Recital de Poesía", "Carlos Ruiz", "url_photo_3"),
