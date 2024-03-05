@@ -189,16 +189,19 @@
 
 
         <ImageView
+            android:id="@+id/listeventbtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_listevent" />
 
         <ImageView
+            android:id="@+id/notificationbtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_notification" />
 
         <ImageView
+            android:id="@+id/userbtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_user" />

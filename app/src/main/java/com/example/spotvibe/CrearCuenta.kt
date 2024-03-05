@@ -20,8 +20,12 @@ class CrearCuenta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_cuenta)
-
+        val intent= Intent(this, Preferencias::class.java)
         takePictureImageView = findViewById<ImageView>(R.id.imageViewPhoto)
+        val btn=findViewById<Button>(R.id.createAccountButton)
+        btn.setOnClickListener{
+            startActivity(intent)
+        }
 
         // Verifica si los permisos de cámara ya fueron concedidos
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
