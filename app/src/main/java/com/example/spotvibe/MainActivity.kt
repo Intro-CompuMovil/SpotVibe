@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val intent= Intent(this, Home::class.java)
         val intent2= Intent(this, CrearCuenta::class.java)
+        val intent3=Intent(this, ForgotPassword::class.java)
         val imageButton=findViewById<Button>(R.id.button_login)
         imageButton.setOnClickListener{
             startActivity(intent)
@@ -20,6 +21,10 @@ class MainActivity : AppCompatActivity() {
         val linkCreate =findViewById<TextView>(R.id.text_create_account)
         linkCreate.setOnClickListener {
             startActivity(intent2)
+        }
+        val linkforgot=findViewById<TextView>(R.id.textview_forgot_password)
+        linkforgot.setOnClickListener {
+            startActivity(intent3)
         }
     }
 }

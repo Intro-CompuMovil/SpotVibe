@@ -59,7 +59,7 @@
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Full Name"
+        android:hint="User name"
         android:layout_below="@id/fullnameEditText"
         android:inputType="text" />
     <EditText
@@ -91,6 +91,20 @@
         android:layout_below="@id/passwordEditText"
         android:inputType="textPassword" />
 
+    <ImageView
+        android:id="@+id/imageViewPhoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/cpasswordEditText"
+        android:src="@drawable/ic_camera"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Toma una foto" />
 
     <Button
         android:id="@+id/createAccountButton"
@@ -98,7 +112,7 @@
         android:layout_height="wrap_content"
         android:text="Create Account"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/cpasswordEditText"
+        android:layout_below="@id/imageViewPhoto"
         android:backgroundTint="@color/naranja" />
 
 </RelativeLayout>
