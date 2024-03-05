@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:padding="20dp">
+
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CREATE YOUR ACCOUNT"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        />
+
+
+    <RadioGroup
+        android:id="@+id/accountTypeRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerText"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/personRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Persona"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/ownerRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dueño" />
+    </RadioGroup>
+
+     <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+
+        android:layout_below="@id/accountTypeRadioGroup"
+        android:inputType="textEmailAddress" />
+    <EditText
+        android:id="@+id/fullnameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:layout_below="@id/emailEditText"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:layout_below="@id/fullnameEditText"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/numberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number"
+        android:layout_below="@id/usernameEditText"
+        android:inputType="number" />
+    <EditText
+        android:id="@+id/cedulaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cedula"
+        android:layout_below="@id/numberEditText"
+        android:inputType="number" />
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_below="@id/cedulaEditText"
+        android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/cpasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirm password"
+        android:layout_below="@id/passwordEditText"
+        android:inputType="textPassword" />
+
+
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/cpasswordEditText"
+        android:backgroundTint="@color/naranja" />
+
+</RelativeLayout>
