@@ -1,0 +1,145 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
+
+    <View
+        android:id="@+id/Encabezado"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/naranja" />
+
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_back"
+        />
+
+    <TextView
+        android:id="@+id/Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/back_icon"
+        android:layout_centerHorizontal="true"
+        android:text="CHOOSE YOUR PREFERENCES"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Encabezado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:text="Restaurante"
+        android:background="@color/naranja"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text=" Discoteca"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text="Automoviles"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text="Deportes"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text="Videojuegos"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text="Maquillaje"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/naranja"
+        android:text="Videojuegos"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkBox6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:background="@color/naranja"
+        android:text="Maquillaje"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/checkBox7"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/naranja"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>
+
