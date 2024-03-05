@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<<<<<<< HEAD
+
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
-=======
->>>>>>> 6f3575c788ec980b85c08d1ddb7a8e7109746ae2
+
 
     <application
         android:allowBackup="true"
@@ -18,10 +17,13 @@
         android:theme="@style/Theme.SpotVibe"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
+
             android:name=".CrearCuenta"
-=======
+            android:exported="false" />
+        <activity
             android:name=".DetallesEvento"
+                android:exported="false" />
+        <activity
             android:name=".Perfil"
             android:exported="false" />
         <activity
@@ -29,7 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".eventosInscritos"
->>>>>>> 6f3575c788ec980b85c08d1ddb7a8e7109746ae2
             android:exported="false" />
         <activity
             android:name=".Busqueda"

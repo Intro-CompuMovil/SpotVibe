@@ -12,11 +12,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val intent= Intent(this, Home::class.java)
-<<<<<<< HEAD
+
         val intent2= Intent(this, CrearCuenta::class.java)
         val intent3=Intent(this, ForgotPassword::class.java)
-=======
->>>>>>> 6f3575c788ec980b85c08d1ddb7a8e7109746ae2
+
         val imageButton=findViewById<Button>(R.id.button_login)
         imageButton.setOnClickListener{
             startActivity(intent)
