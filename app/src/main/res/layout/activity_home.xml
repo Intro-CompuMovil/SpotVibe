@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home"
+    android:background="@color/fondo"
+    android:padding="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/linearl1"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        >
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            tools:srcCompat="@drawable/logosinfondo"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            tools:srcCompat="@drawable/ic_search"
+            android:layout_weight="0.15"
+            android:background="@drawable/orangebtnradius"
+            android:layout_gravity="center_vertical"
+            />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Search Here"
+            android:background="@android:color/transparent"
+            android:gravity="start"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="15dp"
+            android:paddingLeft="20dp"
+            android:inputType="text"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.85"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearl2"
+        android:layout_below="@+id/linearl1"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome back,"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wilson!"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"/>
+            <View
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/orangebtnradius"
+                />
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="90dp"
+                android:layout_height="70dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/userpic"
+                android:layout_centerInParent="true"
+
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:layout_below="@+id/tv_user_name">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Free User"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="·"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Since 2024"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearl3"
+        android:layout_below="@+id/linearl2"
+
+
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Popular events"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            />
+        <ImageView
+            android:id="@+id/filter"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            tools:srcCompat="@drawable/ic_filter"
+            android:layout_weight="0.30"
+            android:layout_gravity="center_vertical"
+            />
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+</RelativeLayout>
