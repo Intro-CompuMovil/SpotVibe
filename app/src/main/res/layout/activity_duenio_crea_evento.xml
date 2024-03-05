@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DuenioCreaEvento"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/naranja"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:id="@+id/textvieweventodetalles"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nombre del evento"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:gravity="center"></EditText>
+        <EditText
+            android:id="@+id/textviewautordetalles"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:hint="Quien hace el evento?"
+            android:textColor="@color/white"
+            android:textStyle="italic|bold"
+            android:gravity="center"></EditText>
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+    <EditText
+        android:id="@+id/textviewdescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:hint="Descripcion del evento..."
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+
+
+        ></EditText>
+    <Button
+        android:id="@+id/botoninscribirsealevento"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="crear el evento"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="@color/naranja"
+
+        ></Button>
+
+</LinearLayout>
