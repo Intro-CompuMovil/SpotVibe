@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
     android:background="@color/black"
@@ -9,42 +9,42 @@
 
 
 
-            <TextView
-                android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="16dp"
-            android:text="Today, I Will"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Today, I Will"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
 
-                android:layout_toRightOf="@+id/iconImage"/>
+        android:layout_toRightOf="@+id/iconImage"/>
 
-            <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewTitle"
-            android:layout_alignStart="@+id/textViewTitle"
-            android:layout_marginTop="4dp"
-            android:text="Alfredo Torres"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-                />
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_alignStart="@+id/textViewTitle"
+        android:layout_marginTop="4dp"
+        android:text="Alfredo Torres"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        />
 
-            <ImageView
-            android:id="@+id/iconImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+    <ImageView
+        android:id="@+id/iconImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
 
-            android:src="@drawable/ic_user_inscription"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/orangebtnradius"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:contentDescription="@null"/>
+        android:src="@drawable/ic_user_inscription"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/orangebtnradius"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@null"/>
 
-    </RelativeLayout>
+</RelativeLayout>
