@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spotvibe.Evento
 import com.example.spotvibe.R
 
-class Eventadapter (private val listaEventos:List<Evento>):
+class Eventadapter (private var listaEventos:List<Evento>):
     RecyclerView.Adapter<EventViewholder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewholder {
@@ -21,5 +21,9 @@ class Eventadapter (private val listaEventos:List<Evento>):
         val item = listaEventos[position]
          holder.render(item)
 
+    }
+    fun updateList(newList: List<Evento>) {
+        listaEventos = newList
+        notifyDataSetChanged()
     }
 }

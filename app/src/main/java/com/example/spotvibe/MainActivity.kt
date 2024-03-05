@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val intent= Intent(this, Home::class.java)
+        val intent= Intent(this, Busqueda::class.java)
         val imageButton=findViewById<Button>(R.id.button_login)
         imageButton.setOnClickListener{
             startActivity(intent)
