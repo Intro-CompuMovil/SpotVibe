@@ -19,6 +19,9 @@
         android:theme="@style/Theme.SpotVibe"
         tools:targetApi="31">
         <activity
+            android:name=".HomeDuenio"
+            android:exported="false" />
+        <activity
             android:name=".DuenioCreaEvento"
             android:exported="false" />
         <activity
