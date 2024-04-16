@@ -20,14 +20,15 @@ class Home : AppCompatActivity() {
         val intent2= Intent(this, Perfil::class.java)
         val intent3= Intent(this, Notificaciones::class.java)
         val intent4= Intent(this, eventosInscritos::class.java)
+        val intent5= Intent(this, Eventos::class.java)
         val imageButton3=findViewById<ImageView>(R.id.notificationbtn)
         val imageButton4=findViewById<ImageView>(R.id.listeventbtn)
         val imageButton2=findViewById<ImageView>(R.id.userbtn)
         val imageButton=findViewById<ImageView>(R.id.imageView2)
+        val imageUbicacion=findViewById<ImageView>(R.id.imageV)
         imageButton.setOnClickListener{
             startActivity(intent)
         }
-
         imageButton2.setOnClickListener{
             startActivity(intent2)
         }
@@ -36,6 +37,9 @@ class Home : AppCompatActivity() {
         }
         imageButton4.setOnClickListener{
             startActivity(intent4)
+        }
+        imageUbicacion.setOnClickListener(){
+            startActivity(intent5)
         }
     }
 
