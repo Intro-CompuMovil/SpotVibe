@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        getLocation()
         val Recordame = findViewById<CheckBox>(R.id.checkbox_remember_me)
         Recordame.isEnabled
         val intent= Intent(this, Home::class.java)
@@ -30,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val intent4= Intent(this, HomeDuenio::class.java)
         val imageButton=findViewById<Button>(R.id.button_login)
         imageButton.setOnClickListener{
+            getLocation()
             if(Recordame.isChecked){
                 startActivity(intent4)
             }
