@@ -28,14 +28,21 @@ class CrearCuenta : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Verifica si los permisos de cámara ya fueron concedidos
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED) {
-            // Si no se concedieron, solicita los permisos
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
-        } else {
-            // Permiso concedido, configura el listener para el ImageView
-            setupImageView()
+        takePictureImageView.setOnClickListener {
+            // Verifica si los permisos de cámara ya fueron concedidos
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                // Si no se concedieron, solicita los permisos
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.CAMERA),
+                    REQUEST_CAMERA_PERMISSION
+                )
+            } else {
+                // Permiso concedido, configura el listener para el ImageView
+                setupImageView()
+            }
         }
     }
 
