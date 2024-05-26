@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "832015745478",
+    "project_id": "spotvibe-47e72",
+    "storage_bucket": "spotvibe-47e72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832015745478:android:7b3d09b8a6f2385347f2c7",
+        "android_client_info": {
+          "package_name": "com.example.spotvibe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC66d9vPFjOD5TtCKquNWIMWM6acWJOcw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
