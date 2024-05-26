@@ -1,7 +1,7 @@
 package com.example.spotvibe
 
 class EventProvider {
-    companion object{
+    /*companion object{
         val listaEventos = listOf<Evento>(
             Evento("Concierto de Rock", "Juan Pérez", "url_photo_1", "0 km", "4.656066, -74.059591"), // Parque Simón Bolívar
             Evento("Exposición de Arte Moderno", "Ana Gómez", "url_photo_2", "0 km", "4.612639, -74.0705"), // Museo Botero
@@ -15,4 +15,6 @@ class EventProvider {
             Evento("Conferencia sobre Cambio Climático", "Lucía Ramírez", "url_photo_10", "0 km", "4.601844, -74.066389") // Maloka
         )
     }
+
+     */
 }

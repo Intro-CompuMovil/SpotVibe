@@ -125,13 +125,13 @@ class MainActivity : AppCompatActivity() {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 location?.let {
                     val currentLocation = LatLng(it.latitude, it.longitude)
-                    updateEventDistances(currentLocation)
+                    //updateEventDistances(currentLocation)
                 }
             }
         }
     }
 
-    private fun updateEventDistances(currentLocation: LatLng) {
+   /* private fun updateEventDistances(currentLocation: LatLng) {
         EventProvider.listaEventos.forEach { evento ->
             val eventLocation = evento.MapsDistancia.split(", ").let {
                 LatLng(it[0].toDouble(), it[1].toDouble())
@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
         }
         // Actualiza tu interfaz de usuario aquí si es necesario
     }
-
+*/
     private fun calculateDistance(currentLocation: LatLng, eventLocation: LatLng): Float {
         val results = FloatArray(1)
         Location.distanceBetween(

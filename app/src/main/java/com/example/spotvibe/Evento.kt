@@ -1,3 +1,11 @@
 package com.example.spotvibe
 
-data class Evento (val name:String, val Autor:String, val photo:String, var distancia:String, val MapsDistancia:String)
+data class Evento(
+    val autor: String = "",
+    val cantidadInscritos: Int = 0,
+    val cantidadParticipantes: String = "",
+    val detalles: String = "",
+    val estado: String = "",
+    val imagenUrl: String = "",
+    val nombre: String = ""
+)
