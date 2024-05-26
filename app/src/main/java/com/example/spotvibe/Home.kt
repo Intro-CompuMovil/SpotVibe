@@ -117,14 +117,17 @@ class Home : AppCompatActivity() {
     private fun selecciondeEvento() {
         eventAdapter.setOnItemClickListener(object : Eventadapter.OnItemClickListener {
             override fun onItemClick(evento: Evento) {
-                val nombreEvento = evento.nombre
-                val autorEvento = evento.autor
-                val fotoEvento = evento.imagenUrl
+
                 val intent = Intent(this@Home, DetallesEvento::class.java)
-                intent.putExtra("nombreEvento", nombreEvento)
-                intent.putExtra("autorEvento", autorEvento)
-                intent.putExtra("fotoEvento", fotoEvento)
+                intent.putExtra("nombreEvento", evento.nombre)
+                intent.putExtra("autorEvento", evento.autor)
+                intent.putExtra("fotoEvento", evento.imagenUrl)
+                intent.putExtra("detallesEvento", evento.detalles)
+                intent.putExtra("cantidadParticipantes", evento.cantidadParticipantes)
+                intent.putExtra("cantidadInscritos", evento.cantidadInscritos)
+                intent.putExtra("estadoEvento", evento.estado)
                 startActivity(intent)
+
             }
         })
     }

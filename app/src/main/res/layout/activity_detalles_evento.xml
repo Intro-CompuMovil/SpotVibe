@@ -1,72 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetallesEvento"
-    android:orientation="vertical">
+    android:background="@color/fondo"
+    android:padding="16dp">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/naranja"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:id="@+id/textvieweventodetalles"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="asasd "
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:background="@color/naranja"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textvieweventodetalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Evento"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/textviewautordetalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Autor del Evento"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/textviewdescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción del Evento"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textviewcantidadparticipantes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Participantes"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/textviewcantidadinscritos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inscritos"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/textviewestado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado del Evento"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/botoninscribirsealevento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inscribirme al evento"
             android:textStyle="bold"
-            android:gravity="center"></TextView>
-        <TextView
-            android:id="@+id/textviewautordetalles"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="3424232432342342"
-            android:textColor="@color/white"
-            android:textStyle="italic|bold"
-            android:gravity="center"></TextView>
-
-
-
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/naranja"
+            android:textColor="@color/white" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:srcCompat="@mipmap/ic_launcher" />
-    <TextView
-        android:id="@+id/textviewdescripcion"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:text="sadasdsadfjo"
-        android:layout_margin="10dp"
-        android:gravity="center_horizontal"
-
-
-        ></TextView>
-    <Button
-        android:id="@+id/botoninscribirsealevento"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Inscribirme al evento"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:backgroundTint="@color/naranja"
-
-        ></Button>
-
-</LinearLayout>
+</ScrollView>
