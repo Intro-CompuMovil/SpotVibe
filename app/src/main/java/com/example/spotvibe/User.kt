@@ -6,4 +6,5 @@ data class User(var name: String = "",
                 var number: String = "",
                 var cedula: String = "",
                 var email: String = "",
+                val rol:String="",
                 var profileImageUrl: String = "")

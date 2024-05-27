@@ -33,6 +33,7 @@ class CrearCuenta : AppCompatActivity() {
     private lateinit var usernameInput: EditText
     private lateinit var numberInput: EditText
     private lateinit var cedulaInput: EditText
+    private lateinit var accountTypeRadioGroup: RadioGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +51,7 @@ class CrearCuenta : AppCompatActivity() {
         usernameInput = findViewById(R.id.usernameEditText)
         numberInput = findViewById(R.id.numberEditText)
         cedulaInput = findViewById(R.id.cedulaEditText)
+        accountTypeRadioGroup = findViewById(R.id.accountTypeRadioGroup)
 
         val btn = findViewById<Button>(R.id.createAccountButton)
         btn.setOnClickListener {
@@ -121,6 +123,10 @@ class CrearCuenta : AppCompatActivity() {
         val number = numberInput.text.toString().trim()
         val cedula = cedulaInput.text.toString().trim()
 
+        // Get selected role
+        val selectedRoleId = accountTypeRadioGroup.checkedRadioButtonId
+        val role = if (selectedRoleId == R.id.personRadioButton) "Persona" else "Dueño"
+
         val userMap = User(
             name = name,
             lastName = lastName,
@@ -128,6 +134,7 @@ class CrearCuenta : AppCompatActivity() {
             number = number,
             cedula = cedula,
             email = email,
+            rol = role,
             profileImageUrl = ""
         )
 

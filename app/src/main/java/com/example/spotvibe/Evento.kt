@@ -9,5 +9,6 @@ data class Evento(
     val estado: String = "",
     val imagenUrl: String = "",
     val nombre: String = "",
+    val localizacion: String="",
     val emailCreador: String = ""
 )

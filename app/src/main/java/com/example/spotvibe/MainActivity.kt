@@ -20,10 +20,12 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,32 +34,33 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().reference
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val recordame = findViewById<CheckBox>(R.id.checkbox_remember_me)
         val emailInput = findViewById<EditText>(R.id.edittext1)
         val passwordInput = findViewById<EditText>(R.id.edittext2)
 
-        val intent = Intent(this, Home::class.java)
-        val intent2 = Intent(this, CrearCuenta::class.java)
-        val intent3 = Intent(this, ForgotPassword::class.java)
-        val intent4 = Intent(this, HomeDuenio::class.java)
+        val intentPersona = Intent(this, Home::class.java)
+        val intentCrearCuenta = Intent(this, CrearCuenta::class.java)
+        val intentForgotPassword = Intent(this, ForgotPassword::class.java)
+        val intentDuenio = Intent(this, HomeDuenio::class.java)
 
         val loginButton = findViewById<Button>(R.id.button_login)
         loginButton.setOnClickListener {
             if (validateInputs(emailInput, passwordInput)) {
-                loginUser(emailInput.text.toString(), passwordInput.text.toString(), recordame, intent, intent4)
+                loginUser(emailInput.text.toString(), passwordInput.text.toString(), recordame, intentPersona, intentDuenio)
             }
         }
 
         val linkCreate = findViewById<TextView>(R.id.text_create_account)
         linkCreate.setOnClickListener {
-            startActivity(intent2)
+            startActivity(intentCrearCuenta)
         }
 
         val linkForgot = findViewById<TextView>(R.id.textview_forgot_password)
         linkForgot.setOnClickListener {
-            startActivity(intent3)
+            startActivity(intentForgotPassword)
         }
     }
 
@@ -92,30 +95,41 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun loginUser(email: String, password: String, recordame: CheckBox, intent: Intent, intent4: Intent) {
+    private fun loginUser(email: String, password: String, recordame: CheckBox, intentPersona: Intent, intentDuenio: Intent) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     Toast.makeText(baseContext, "LOGIN EXITOSO", Toast.LENGTH_SHORT).show()
-                    updateUI(user, recordame, intent, intent4, email)
+                    user?.let {
+                        getUserRoleAndRedirect(it, recordame, intentPersona, intentDuenio)
+                    }
                 } else {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    updateUI(null, recordame, intent, intent4, email)
                 }
             }
     }
 
-    private fun updateUI(user: FirebaseUser?, recordame: CheckBox, intent: Intent, intent4: Intent, email: String) {
-        if (user != null) {
-            getLocation()
-            if (recordame.isChecked) {
-                intent4.putExtra("user_email", email)
-                startActivity(intent4)
-            } else {
-                startActivity(intent)
+    private fun getUserRoleAndRedirect(user: FirebaseUser, recordame: CheckBox, intentPersona: Intent, intentDuenio: Intent) {
+        val userId = user.uid
+        val userRef = database.child("users").child(userId).child("rol")
+
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val role = dataSnapshot.getValue(String::class.java)
+                if (role != null) {
+                    if (role == "Dueño") {
+                        startActivity(intentDuenio)
+                    } else {
+                        startActivity(intentPersona)
+                    }
+                }
             }
-        }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Toast.makeText(baseContext, "Failed to retrieve user role.", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun getLocation() {
