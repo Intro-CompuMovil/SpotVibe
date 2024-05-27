@@ -62,6 +62,7 @@ class Busqueda : AppCompatActivity() {
             override fun onItemClick(evento: Evento) {
 
                 val intent = Intent(this@Busqueda, DetallesEvento::class.java)
+                intent.putExtra("eventId", evento.id)
                 intent.putExtra("nombreEvento", evento.nombre)
                 intent.putExtra("autorEvento", evento.autor)
                 intent.putExtra("fotoEvento", evento.imagenUrl)
@@ -69,7 +70,6 @@ class Busqueda : AppCompatActivity() {
                 intent.putExtra("cantidadParticipantes", evento.cantidadParticipantes)
                 intent.putExtra("cantidadInscritos", evento.cantidadInscritos)
                 intent.putExtra("estadoEvento", evento.estado)
-                startActivity(intent)
                 startActivity(intent)
             }
         })

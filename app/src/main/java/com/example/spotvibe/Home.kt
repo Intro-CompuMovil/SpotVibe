@@ -100,7 +100,8 @@ class Home : AppCompatActivity() {
                 if (snapshot.exists()) {
                     val eventList = mutableListOf<Evento>()
                     for (eventSnapshot in snapshot.children) {
-                        val event = eventSnapshot.getValue(Evento::class.java)
+                        val eventId = eventSnapshot.key ?: ""
+                        val event = eventSnapshot.getValue(Evento::class.java)?.copy(id = eventId)
                         event?.let { eventList.add(it) }
                     }
                     eventAdapter.updateList(eventList)
@@ -114,11 +115,13 @@ class Home : AppCompatActivity() {
     }
 
 
+
     private fun selecciondeEvento() {
         eventAdapter.setOnItemClickListener(object : Eventadapter.OnItemClickListener {
             override fun onItemClick(evento: Evento) {
 
                 val intent = Intent(this@Home, DetallesEvento::class.java)
+                intent.putExtra("eventId", evento.id)
                 intent.putExtra("nombreEvento", evento.nombre)
                 intent.putExtra("autorEvento", evento.autor)
                 intent.putExtra("fotoEvento", evento.imagenUrl)
