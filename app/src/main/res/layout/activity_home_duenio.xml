@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".HomeDuenio"
     android:background="@color/fondo"
     android:padding="20dp">
+
+    <!-- Header Section -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/linearl1x"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        >
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageViewx"
@@ -29,40 +30,19 @@
             android:src="@drawable/ic_search"
             android:layout_weight="0.15"
             android:background="@drawable/orangebtnradius"
-            android:layout_gravity="center_vertical"
-            />
+            android:layout_gravity="center_vertical" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearl3x"
-
-
-        android:orientation="horizontal" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerEventx"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearl1x"
-        android:layout_marginTop="140dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="30dp" />
-
+    <!-- Floating Bar Section -->
     <LinearLayout
         android:id="@+id/floating_baryx"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/linearl1x"
-        android:layout_alignBottom="@+id/floating_barx"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="516dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@drawable/orangebtnradius"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp">
-
 
         <TextView
             android:id="@+id/textView"
@@ -72,15 +52,25 @@
             android:text="Mis Eventos"
             android:gravity="center"
             android:textStyle="bold"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
     </LinearLayout>
 
+    <!-- RecyclerView Section -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerEventx"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp" />
+
+    <!-- Bottom Bar Section -->
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/floating_barx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/orangebtnradius"
         android:gravity="center"
         android:orientation="horizontal"
@@ -88,18 +78,15 @@
 
         <TextView
             android:id="@+id/textviewCrearEvento"
-            android:paddingHorizontal="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:drawablePadding="4dp"
-            android:text="Crear Evento"
-            android:layout_gravity="center_horizontal"
             android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:text="Crear Evento"
             android:textColor="@color/white"
-
             android:textStyle="bold" />
-
 
         <ImageView
             android:id="@+id/notificationbtnx"
@@ -112,8 +99,5 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_user" />
-
     </LinearLayout>
-
-
-</RelativeLayout>
+</LinearLayout>

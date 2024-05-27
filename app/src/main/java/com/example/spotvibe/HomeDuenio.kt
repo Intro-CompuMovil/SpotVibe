@@ -42,6 +42,7 @@ class HomeDuenio : AppCompatActivity() {
             startActivity(intent2)
         }
         findViewById<ImageView>(R.id.notificationbtnx).setOnClickListener {
+            intent3.putExtra("user_email", emailduenio)
             startActivity(intent3)
         }
 
