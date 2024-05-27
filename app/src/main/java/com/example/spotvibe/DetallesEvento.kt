@@ -22,12 +22,6 @@ class DetallesEvento : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference
 
         LlenarInfoDetalle()
-
-        val botoninscribirse = findViewById<Button>(R.id.botoninscribirsealevento)
-        botoninscribirse.setOnClickListener {
-            EnviarAMisEventos()
-            it.isEnabled = false
-        }
     }
 
     private fun LlenarInfoDetalle() {
@@ -38,6 +32,7 @@ class DetallesEvento : AppCompatActivity() {
         val cantidadInscritos = findViewById<TextView>(R.id.textviewcantidadinscritos)
         val estadoEvento = findViewById<TextView>(R.id.textviewestado)
         val imagenDetalle = findViewById<ImageView>(R.id.imageView3)
+        val botoninscribirse = findViewById<Button>(R.id.botoninscribirsealevento)
 
         val nombreEvento = intent.getStringExtra("nombreEvento")
         val autorEvento = intent.getStringExtra("autorEvento")
@@ -58,11 +53,38 @@ class DetallesEvento : AppCompatActivity() {
         if (!fotoEvento.isNullOrEmpty()) {
             Glide.with(this).load(fotoEvento).into(imagenDetalle)
         }
+
+        val currentUser = auth.currentUser
+        if (currentUser != null && eventId != null) {
+            val userId = currentUser.uid
+            val userEventRef = database.child("userEvents").child(userId).child(eventId)
+
+            userEventRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        // El usuario ya está inscrito
+                        botoninscribirse.text = "Desinscribirme del evento"
+                        botoninscribirse.setOnClickListener {
+                            desinscribirseDelEvento(eventId)
+                        }
+                    } else {
+                        // El usuario no está inscrito
+                        botoninscribirse.text = "Inscribirme al evento"
+                        botoninscribirse.setOnClickListener {
+                            inscribirseAlEvento(eventId)
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle possible errors.
+                }
+            })
+        }
     }
 
-    private fun EnviarAMisEventos() {
+    private fun inscribirseAlEvento(eventId: String) {
         val currentUser = auth.currentUser
-        val eventId = intent.getStringExtra("eventId")
         val nombreEvento = intent.getStringExtra("nombreEvento")
         val autorEvento = intent.getStringExtra("autorEvento")
         val fotoEvento = intent.getStringExtra("fotoEvento")
@@ -71,11 +93,10 @@ class DetallesEvento : AppCompatActivity() {
         val inscritosEvento = intent.getIntExtra("cantidadInscritos", 0)
         val estadoEventoStr = intent.getStringExtra("estadoEvento")
 
-        if (currentUser != null && eventId != null) {
+        if (currentUser != null) {
             val userId = currentUser.uid
             val userEventRef = database.child("userEvents").child(userId).child(eventId)
 
-            // Crear el registro del evento para el usuario
             val userEventMap = mapOf(
                 "nombreEvento" to nombreEvento,
                 "autorEvento" to autorEvento,
@@ -86,10 +107,8 @@ class DetallesEvento : AppCompatActivity() {
                 "estadoEvento" to estadoEventoStr
             )
 
-            // Guardar el registro del usuario al evento
             userEventRef.setValue(userEventMap).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Incrementar la cantidad de inscritos
                     val eventRef = database.child("eventos").child(eventId)
                     eventRef.child("cantidadInscritos").runTransaction(object : Transaction.Handler {
                         override fun doTransaction(mutableData: MutableData): Transaction.Result {
@@ -115,6 +134,7 @@ class DetallesEvento : AppCompatActivity() {
                                     "Inscripción exitosa al evento: $nombreEvento",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                findViewById<Button>(R.id.botoninscribirsealevento).text = "Desinscribirme del evento"
                             }
                         }
                     })
@@ -122,6 +142,58 @@ class DetallesEvento : AppCompatActivity() {
                     Toast.makeText(
                         this,
                         "Error al inscribir al evento: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        } else {
+            Toast.makeText(this, "Error al obtener la información del evento o usuario.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun desinscribirseDelEvento(eventId: String) {
+        val currentUser = auth.currentUser
+        val nombreEvento = intent.getStringExtra("nombreEvento")
+
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val userEventRef = database.child("userEvents").child(userId).child(eventId)
+
+            userEventRef.removeValue().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val eventRef = database.child("eventos").child(eventId)
+                    eventRef.child("cantidadInscritos").runTransaction(object : Transaction.Handler {
+                        override fun doTransaction(mutableData: MutableData): Transaction.Result {
+                            val currentValue = mutableData.getValue(Int::class.java) ?: 0
+                            mutableData.value = currentValue - 1
+                            return Transaction.success(mutableData)
+                        }
+
+                        override fun onComplete(
+                            databaseError: DatabaseError?,
+                            committed: Boolean,
+                            currentData: DataSnapshot?
+                        ) {
+                            if (databaseError != null) {
+                                Toast.makeText(
+                                    this@DetallesEvento,
+                                    "Error al desinscribir del evento: ${databaseError.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else if (committed) {
+                                Toast.makeText(
+                                    this@DetallesEvento,
+                                    "Desinscripción exitosa del evento: $nombreEvento",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                findViewById<Button>(R.id.botoninscribirsealevento).text = "Inscribirme al evento"
+                            }
+                        }
+                    })
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Error al desinscribir del evento: ${task.exception?.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
