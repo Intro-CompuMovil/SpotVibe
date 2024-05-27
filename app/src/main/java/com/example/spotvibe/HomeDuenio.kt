@@ -65,7 +65,7 @@ class HomeDuenio : AppCompatActivity() {
                     for (eventSnapshot in snapshot.children) {
                         val event = eventSnapshot.getValue(Evento::class.java)
                         event?.let {
-                            if (it.emailduenio == emailduenio) {
+                            if (it.emailCreador == emailduenio) {
                                 eventos.add(it)
                             }
                         }
