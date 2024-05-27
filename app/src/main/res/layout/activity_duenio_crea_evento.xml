@@ -48,10 +48,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:srcCompat="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/imageViewlocation"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/sharp_add_location_24" />
+
     <EditText
         android:id="@+id/textviewdescripcion"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="220dp"
         android:hint="Descripcion del evento..."
         android:layout_margin="10dp"
         android:gravity="center_horizontal"

@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -99,18 +98,19 @@ class MainActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     Toast.makeText(baseContext, "LOGIN EXITOSO", Toast.LENGTH_SHORT).show()
-                    updateUI(user, recordame, intent, intent4)
+                    updateUI(user, recordame, intent, intent4, email)
                 } else {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    updateUI(null, recordame, intent, intent4)
+                    updateUI(null, recordame, intent, intent4, email)
                 }
             }
     }
 
-    private fun updateUI(user: FirebaseUser?, recordame: CheckBox, intent: Intent, intent4: Intent) {
+    private fun updateUI(user: FirebaseUser?, recordame: CheckBox, intent: Intent, intent4: Intent, email: String) {
         if (user != null) {
             getLocation()
             if (recordame.isChecked) {
+                intent4.putExtra("user_email", email)
                 startActivity(intent4)
             } else {
                 startActivity(intent)
@@ -131,17 +131,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-   /* private fun updateEventDistances(currentLocation: LatLng) {
-        EventProvider.listaEventos.forEach { evento ->
-            val eventLocation = evento.MapsDistancia.split(", ").let {
-                LatLng(it[0].toDouble(), it[1].toDouble())
-            }
-            val distance = calculateDistance(currentLocation, eventLocation)
-            evento.distancia = "${distance}m"
-        }
-        // Actualiza tu interfaz de usuario aquí si es necesario
-    }
-*/
     private fun calculateDistance(currentLocation: LatLng, eventLocation: LatLng): Float {
         val results = FloatArray(1)
         Location.distanceBetween(
