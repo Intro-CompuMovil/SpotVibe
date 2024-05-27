@@ -44,9 +44,7 @@ class HomeDuenio : AppCompatActivity() {
         findViewById<ImageView>(R.id.notificationbtnx).setOnClickListener {
             startActivity(intent3)
         }
-        findViewById<ImageView>(R.id.listeventbtnx).setOnClickListener {
-            startActivity(intent4)
-        }
+
     }
 
     private fun initRecyclerView() {
