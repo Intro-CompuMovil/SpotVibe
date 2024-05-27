@@ -32,6 +32,7 @@ class Perfil : AppCompatActivity() {
     private lateinit var numberEditText: EditText
     private lateinit var cedulaEditText: EditText
     private lateinit var saveButton: Button
+    private lateinit var logoutButton: Button
 
     private var currentName: String? = null
     private var currentEmail: String? = null
@@ -60,6 +61,7 @@ class Perfil : AppCompatActivity() {
         numberEditText = findViewById(R.id.numberEditText)
         cedulaEditText = findViewById(R.id.cedulaEditText)
         saveButton = findViewById(R.id.saveButton)
+        logoutButton = findViewById(R.id.logoutButton)
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
@@ -99,6 +101,10 @@ class Perfil : AppCompatActivity() {
 
         saveButton.setOnClickListener {
             saveUserData()
+        }
+
+        logoutButton.setOnClickListener {
+            logoutUser()
         }
     }
 
@@ -230,5 +236,13 @@ class Perfil : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun logoutUser() {
+        auth.signOut()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 }
