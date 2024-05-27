@@ -14,11 +14,13 @@ class HomeDuenio : AppCompatActivity() {
     private lateinit var eventAdapter: Eventadapter
     private lateinit var database: DatabaseReference
     private var eventos = mutableListOf<Evento>()
+    private var emailduenio: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_duenio)
         database = FirebaseDatabase.getInstance().reference
-        var emailduenio= intent.getStringExtra("user_email")
+        emailduenio = intent.getStringExtra("user_email")
         initRecyclerView()
         loadEventos()
         selecciondeEvento()
@@ -62,7 +64,11 @@ class HomeDuenio : AppCompatActivity() {
                     eventos.clear()
                     for (eventSnapshot in snapshot.children) {
                         val event = eventSnapshot.getValue(Evento::class.java)
-                        event?.let { eventos.add(it) }
+                        event?.let {
+                            if (it.emailduenio == emailduenio) {
+                                eventos.add(it)
+                            }
+                        }
                     }
                     eventAdapter.updateList(eventos)
                 }
