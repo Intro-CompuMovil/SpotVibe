@@ -120,8 +120,6 @@ class Home : AppCompatActivity() {
         eventAdapter.setOnItemClickListener(object : Eventadapter.OnItemClickListener {
             override fun onItemClick(evento: Evento) {
 
-                val eventId = evento // Obtén el ID del evento de alguna manera, quizás del adaptador o del modelo de datos
-
                 val intent = Intent(this@Home, DetallesEvento::class.java)
                 intent.putExtra("eventId", evento.id)
                 intent.putExtra("nombreEvento", evento.nombre)

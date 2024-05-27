@@ -98,13 +98,13 @@ class DetallesEvento : AppCompatActivity() {
             val userEventRef = database.child("userEvents").child(userId).child(eventId)
 
             val userEventMap = mapOf(
-                "nombreEvento" to nombreEvento,
-                "autorEvento" to autorEvento,
-                "fotoEvento" to fotoEvento,
-                "detallesEvento" to detallesEvento,
-                "participantesEvento" to participantesEvento,
-                "inscritosEvento" to inscritosEvento,
-                "estadoEvento" to estadoEventoStr
+                "nombre" to nombreEvento,
+                "autor" to autorEvento,
+                "imagenUrl" to fotoEvento,
+                "detalles" to detallesEvento,
+                "cantidadParticipantes" to participantesEvento,
+                "cantidadInscritos" to inscritosEvento,
+                "estado" to estadoEventoStr
             )
 
             userEventRef.setValue(userEventMap).addOnCompleteListener { task ->
