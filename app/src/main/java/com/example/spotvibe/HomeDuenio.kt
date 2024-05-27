@@ -63,7 +63,10 @@ class HomeDuenio : AppCompatActivity() {
                 if (snapshot.exists()) {
                     eventos.clear()
                     for (eventSnapshot in snapshot.children) {
-                        val event = eventSnapshot.getValue(Evento::class.java)
+                        val eventId = eventSnapshot.key // Get the event ID
+                        val event = eventSnapshot.getValue(Evento::class.java)?.apply {
+                            this.id = eventId // Set the event ID
+                        }
                         event?.let {
                             if (it.emailCreador == emailduenio) {
                                 eventos.add(it)
@@ -75,21 +78,23 @@ class HomeDuenio : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Maneja posibles errores.
+                // Handle possible errors.
             }
         })
     }
 
     private fun selecciondeEvento() {
         eventAdapter.setOnItemClickListener(object : Eventadapter.OnItemClickListener {
-            override fun onItemClick(evento: Evento) {
-                val intent = Intent(this@HomeDuenio, DetallesEvento::class.java).apply {
+            override fun onItemClick(evento: Evento) { print(evento.id)
+                val intent = Intent(this@HomeDuenio, ModificaEvento::class.java).apply {
+                    putExtra("eventId", evento.id)
                     putExtra("nombreEvento", evento.nombre)
                     putExtra("autorEvento", evento.autor)
                     putExtra("fotoEvento", evento.imagenUrl)
+                    putExtra("detalleEvento", evento.detalles)
+                    putExtra("cantidadParticipantes", evento.cantidadParticipantes)
                 }
                 startActivity(intent)
             }
         })
-    }
-}
+    }}

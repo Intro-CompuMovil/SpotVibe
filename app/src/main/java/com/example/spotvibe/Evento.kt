@@ -1,6 +1,7 @@
 package com.example.spotvibe
 
 data class Evento(
+    var id: String? = null,
     val autor: String = "",
     val cantidadInscritos: Int = 0,
     val cantidadParticipantes: String = "",
