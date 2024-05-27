@@ -41,26 +41,30 @@ class MainActivity : AppCompatActivity() {
         val emailInput = findViewById<EditText>(R.id.edittext1)
         val passwordInput = findViewById<EditText>(R.id.edittext2)
 
-        val intentPersona = Intent(this, Home::class.java)
-        val intentCrearCuenta = Intent(this, CrearCuenta::class.java)
-        val intentForgotPassword = Intent(this, ForgotPassword::class.java)
-        val intentDuenio = Intent(this, HomeDuenio::class.java)
-
         val loginButton = findViewById<Button>(R.id.button_login)
         loginButton.setOnClickListener {
             if (validateInputs(emailInput, passwordInput)) {
-                loginUser(emailInput.text.toString(), passwordInput.text.toString(), recordame, intentPersona, intentDuenio)
+                loginUser(emailInput.text.toString(), passwordInput.text.toString(), recordame)
             }
         }
 
         val linkCreate = findViewById<TextView>(R.id.text_create_account)
         linkCreate.setOnClickListener {
-            startActivity(intentCrearCuenta)
+            startActivity(Intent(this, CrearCuenta::class.java))
         }
 
         val linkForgot = findViewById<TextView>(R.id.textview_forgot_password)
         linkForgot.setOnClickListener {
-            startActivity(intentForgotPassword)
+            startActivity(Intent(this, ForgotPassword::class.java))
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // Si el usuario ya está autenticado, verifica su rol y redirígelo
+            getUserRoleAndRedirect(currentUser)
         }
     }
 
@@ -95,14 +99,14 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun loginUser(email: String, password: String, recordame: CheckBox, intentPersona: Intent, intentDuenio: Intent) {
+    private fun loginUser(email: String, password: String, recordame: CheckBox) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     Toast.makeText(baseContext, "LOGIN EXITOSO", Toast.LENGTH_SHORT).show()
                     user?.let {
-                        getUserRoleAndRedirect(it, recordame, intentPersona, intentDuenio)
+                        getUserRoleAndRedirect(it)
                     }
                 } else {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
@@ -110,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun getUserRoleAndRedirect(user: FirebaseUser, recordame: CheckBox, intentPersona: Intent, intentDuenio: Intent) {
+    private fun getUserRoleAndRedirect(user: FirebaseUser) {
         val userId = user.uid
         val userRef = database.child("users").child(userId).child("rol")
 
@@ -119,10 +123,11 @@ class MainActivity : AppCompatActivity() {
                 val role = dataSnapshot.getValue(String::class.java)
                 if (role != null) {
                     if (role == "Dueño") {
-                        startActivity(intentDuenio)
+                        startActivity(Intent(this@MainActivity, HomeDuenio::class.java))
                     } else {
-                        startActivity(intentPersona)
+                        startActivity(Intent(this@MainActivity, Home::class.java))
                     }
+                    finish() // Cierra la MainActivity para evitar que el usuario vuelva a ella con el botón de retroceso
                 }
             }
 
