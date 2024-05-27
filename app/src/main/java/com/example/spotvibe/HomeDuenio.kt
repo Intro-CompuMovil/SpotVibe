@@ -42,11 +42,10 @@ class HomeDuenio : AppCompatActivity() {
             startActivity(intent2)
         }
         findViewById<ImageView>(R.id.notificationbtnx).setOnClickListener {
+            intent3.putExtra("user_email", emailduenio)
             startActivity(intent3)
         }
-        findViewById<ImageView>(R.id.listeventbtnx).setOnClickListener {
-            startActivity(intent4)
-        }
+
     }
 
     private fun initRecyclerView() {

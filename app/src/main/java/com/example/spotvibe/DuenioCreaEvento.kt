@@ -154,7 +154,7 @@ class DuenioCreaEvento : AppCompatActivity() {
     }
 
     private fun saveEventToDatabase(nombre: String, autor: String, detalles: String, cantidadParticipantes: String, imageUrl: String, location: String) {
-       var emailcreador = intent.getStringExtra("user_email").toString()
+        val emailCreador = intent.getStringExtra("user_email").toString()
         val evento = EventoInput(
             nombre = nombre,
             autor = autor,
@@ -164,16 +164,35 @@ class DuenioCreaEvento : AppCompatActivity() {
             estado = "PENDIENTE",
             imagenUrl = imageUrl,
             localizacion = location,
-            emailCreador = emailcreador
+            emailCreador = emailCreador
         )
+
         val database = FirebaseDatabase.getInstance()
         val myRef = database.reference.child("eventos").push()
         myRef.setValue(evento).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(this@DuenioCreaEvento, "Evento guardado en Firebase", Toast.LENGTH_SHORT).show()
+
+                // Crear y guardar la notificación
+                val notificacionRef = database.reference.child("notificaciones").push()
+                val notificacion = Notificacion(
+                    email = emailCreador,
+                    mensaje = "Tu evento '$nombre' ha sido creado exitosamente."
+                )
+                notificacionRef.setValue(notificacion).addOnCompleteListener { notiTask ->
+                    if (notiTask.isSuccessful) {
+                        // Redirigir al usuario a HomeDuenio
+                        val intent = Intent(this@DuenioCreaEvento, HomeDuenio::class.java)
+                        intent.putExtra("user_email", emailCreador)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@DuenioCreaEvento, "Error al guardar la notificación", Toast.LENGTH_SHORT).show()
+                    }
+                }
             } else {
                 Toast.makeText(this@DuenioCreaEvento, "Error al guardar el evento", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
 }
