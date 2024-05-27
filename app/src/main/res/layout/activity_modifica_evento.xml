@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/fondo"
+    android:padding="16dp"
+    tools:context=".ModificaEvento">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/naranja"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/edittextNombreEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del Evento"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/edittextAutorEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Autor del Evento"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:textColorHint="@color/white" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageVieweventos"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textviewdescripcion1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Descripción del Evento"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edittextDescripcionEvento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Descripción"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/textviewcantidadparticipantes1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Participantes"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edittextParticipantesEvento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Participantes"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/textviewcantidadinscritos1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Inscritos"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edittextInscritosEvento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Inscritos"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/textviewestado1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Estado del Evento"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edittextEstadoEvento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="Estado"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/botoncambiarevento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="modificar evento"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/naranja"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/botoneliminarevento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="eliminar evento"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/naranja"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</ScrollView>
