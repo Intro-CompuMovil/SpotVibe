@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -107,11 +108,23 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "LOGIN EXITOSO", Toast.LENGTH_SHORT).show()
                     user?.let {
                         getUserRoleAndRedirect(it)
+                        // Obtener y guardar el token FCM
+                        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val token = task.result
+                                saveTokenToDatabase(user.uid, token)
+                            }
+                        }
                     }
                 } else {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun saveTokenToDatabase(userId: String, token: String) {
+        val userRef = database.child("users").child(userId)
+        userRef.child("token").setValue(token)
     }
 
     private fun getUserRoleAndRedirect(user: FirebaseUser) {
