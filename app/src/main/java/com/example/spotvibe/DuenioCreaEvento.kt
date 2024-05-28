@@ -2,39 +2,47 @@ package com.example.spotvibe
 
 import android.Manifest
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.ImageView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import android.content.pm.PackageManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
-import java.util.UUID
+import java.util.*
 
 class DuenioCreaEvento : AppCompatActivity() {
     private lateinit var fotoImageView: ImageView
+    private lateinit var fechaTextView: TextView
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_IMAGE_PICK = 2
     private val REQUEST_LOCATION_PICK = 3
     private lateinit var storageReference: StorageReference
     private var imageUri: Uri? = null
     private var locationLatLng: Pair<Double, Double>? = null
+    private var selectedDate: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_duenio_crea_evento)
 
+        val idCreador = intent.getStringExtra("user_id")
+        if (idCreador.isNullOrEmpty()) {
+            Toast.makeText(this, "Error: User ID not provided", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
         fotoImageView = findViewById(R.id.imageView3)
+        fechaTextView = findViewById(R.id.edittextfechaa)
         val nombreevento = findViewById<EditText>(R.id.textviewnombreevento)
         val autorevento = findViewById<EditText>(R.id.textviewautordetalles)
         val detallesevento = findViewById<EditText>(R.id.textviewdescripcion)
@@ -58,6 +66,7 @@ class DuenioCreaEvento : AppCompatActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ), 0)
+
         }
 
         fotoImageView.setOnClickListener {
@@ -89,17 +98,20 @@ class DuenioCreaEvento : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_LOCATION_PICK)
         }
 
+        fechaTextView.setOnClickListener {
+            showDatePickerDialog()
+        }
+
         botoncrear.setOnClickListener {
             val nombre = nombreevento.text.toString()
             val autor = autorevento.text.toString()
             val detalles = detallesevento.text.toString()
             val cantidadParticipantes = cantidadparticipevento.text.toString()
-
-            if (imageUri != null && locationLatLng != null) {
+            if (imageUri != null && locationLatLng != null && !selectedDate.isNullOrEmpty()) {
                 val locationAddress = "${locationLatLng!!.first},${locationLatLng!!.second}"
-                uploadImageAndSaveEvent(nombre, autor, detalles, cantidadParticipantes, locationAddress)
+                uploadImageAndSaveEvent(nombre, autor, detalles, cantidadParticipantes, locationAddress, selectedDate!!, idCreador)
             } else {
-                Toast.makeText(this, "Por favor, selecciona una imagen y una ubicación", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, selecciona una imagen, una ubicación y una fecha", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -138,13 +150,13 @@ class DuenioCreaEvento : AppCompatActivity() {
         return Uri.parse(path)
     }
 
-    private fun uploadImageAndSaveEvent(nombre: String, autor: String, detalles: String, cantidadParticipantes: String, location: String) {
+    private fun uploadImageAndSaveEvent(nombre: String, autor: String, detalles: String, cantidadParticipantes: String, location: String, selectedDate: String, idCreador: String) {
         val ref = storageReference.child("eventos/${UUID.randomUUID()}")
         imageUri?.let { uri ->
             ref.putFile(uri)
                 .addOnSuccessListener {
                     ref.downloadUrl.addOnSuccessListener { downloadUri ->
-                        saveEventToDatabase(nombre, autor, detalles, cantidadParticipantes, downloadUri.toString(), location)
+                        saveEventToDatabase(nombre, autor, detalles, cantidadParticipantes, downloadUri.toString(), location, selectedDate, idCreador)
                     }
                 }
                 .addOnFailureListener {
@@ -153,8 +165,7 @@ class DuenioCreaEvento : AppCompatActivity() {
         }
     }
 
-    private fun saveEventToDatabase(nombre: String, autor: String, detalles: String, cantidadParticipantes: String, imageUrl: String, location: String) {
-        val emailCreador = intent.getStringExtra("user_email").toString()
+    private fun saveEventToDatabase(nombre: String, autor: String, detalles: String, cantidadParticipantes: String, imageUrl: String, location: String, fecha: String, idCreador: String) {
         val evento = EventoInput(
             nombre = nombre,
             autor = autor,
@@ -164,7 +175,8 @@ class DuenioCreaEvento : AppCompatActivity() {
             estado = "PENDIENTE",
             imagenUrl = imageUrl,
             localizacion = location,
-            emailCreador = emailCreador
+            idCreador = idCreador, // Usar idCreador en lugar de emailCreador
+            fecha = fecha
         )
 
         val database = FirebaseDatabase.getInstance()
@@ -176,23 +188,38 @@ class DuenioCreaEvento : AppCompatActivity() {
                 // Crear y guardar la notificación
                 val notificacionRef = database.reference.child("notificaciones").push()
                 val notificacion = Notificacion(
-                    email = emailCreador,
+                    userId = idCreador,
                     mensaje = "Tu evento '$nombre' ha sido creado exitosamente."
                 )
                 notificacionRef.setValue(notificacion).addOnCompleteListener { notiTask ->
                     if (notiTask.isSuccessful) {
-                        // Redirigir al usuario a HomeDuenio
+                        // Redirigir al usuario a HomeDuenio si se creó correctamente
                         val intent = Intent(this@DuenioCreaEvento, HomeDuenio::class.java)
-                        intent.putExtra("user_email", emailCreador)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this@DuenioCreaEvento, "Error al guardar la notificación", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DuenioCreaEvento, "Error al guardar la notificación en Firebase", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
-                Toast.makeText(this@DuenioCreaEvento, "Error al guardar el evento", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DuenioCreaEvento, "Error al guardar el evento en Firebase", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    private fun showDatePickerDialog() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, selectedYear, selectedMonth, selectedDay ->
+                selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
+                fechaTextView.text = selectedDate
+            },
+            year, month, day
+        )
+        datePickerDialog.show()
+    }
 }

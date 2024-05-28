@@ -1,52 +1,71 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
     android:background="@color/black"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/eventImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/orangebtnradius"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:contentDescription="@null"/>
-
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:text="Today, I Will"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_toRightOf="@id/eventImage"/>
+        android:orientation="horizontal"
+        android:gravity="top">
 
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewTitle"
-        android:layout_alignStart="@id/textViewTitle"
-        android:layout_marginTop="4dp"
-        android:text="Alfredo Torres"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"/>
+        <ImageView
+            android:id="@+id/eventImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/orangebtnradius"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@null"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Today, I Will"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alfredo Torres"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewfecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00/00/33324"
+            android:textColor="@android:color/white"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewDistancia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="139dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="13dp"
         android:text="TextView"
-        android:textColor="@color/white"/>
-</RelativeLayout>
+        android:textColor="@color/white"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

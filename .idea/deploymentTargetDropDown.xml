@@ -9,24 +9,13 @@
               <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\Feli\.android\avd\Pixel_8_Pro_API_31.avd" />
+                  <type value="SERIAL_NUMBER" />
+                  <value value="adb-RR8M605PBSJ-TOv8NP._adb-tls-connect._tcp" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\Feli\.android\avd\Pixel_8_Pro_API_31.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-27T20:35:26.843011200Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-28T00:53:35.035554800Z" />
         </State>
       </entry>
     </value>

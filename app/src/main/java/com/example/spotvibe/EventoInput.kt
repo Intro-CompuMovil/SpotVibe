@@ -9,5 +9,6 @@ data class EventoInput(
     val estado: String,
     val imagenUrl: String,
     val localizacion: String,
-    val emailCreador: String
+    val idCreador: String,
+    val fecha: String
 )

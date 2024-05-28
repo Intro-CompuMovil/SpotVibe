@@ -1,7 +1,7 @@
 package com.example.spotvibe
 
 data class Notificacion(
-    val email: String = "",
+    val userId: String = "",
     val mensaje: String = ""
 )
 

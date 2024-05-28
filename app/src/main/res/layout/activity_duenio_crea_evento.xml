@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".DuenioCreaEvento"
     android:orientation="vertical"
-    android:layout_margin="10dp"
-    >
+    android:layout_margin="10dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/naranja"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/textviewnombreevento"
             android:layout_width="match_parent"
@@ -25,7 +25,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:textStyle="bold"
-            android:gravity="center"></EditText>
+            android:gravity="center" />
+
         <EditText
             android:id="@+id/textviewautordetalles"
             android:layout_width="match_parent"
@@ -36,10 +37,7 @@
             android:hint="Quien hace el evento?"
             android:textColor="@color/white"
             android:textStyle="italic|bold"
-            android:gravity="center"></EditText>
-
-
-
+            android:gravity="center" />
     </LinearLayout>
 
     <ImageView
@@ -62,16 +60,13 @@
         android:layout_height="150dp"
         android:hint="Descripcion del evento..."
         android:layout_margin="10dp"
-        android:gravity="center_horizontal"
+        android:gravity="center_horizontal" />
 
-
-        ></EditText>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
         android:orientation="horizontal"
-        android:layout_margin="20dp"
-        >
+        android:layout_margin="20dp">
 
         <TextView
             android:id="@+id/textocapacity"
@@ -80,30 +75,54 @@
             android:gravity="center"
             android:text="Cantidad de participantes:"
             android:textAlignment="center"
-            android:textSize="25dp"></TextView>
+            android:textSize="25dp" />
+
         <EditText
             android:id="@+id/edittextcantidaddeparticipantes"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:gravity="center"></EditText>
-
-
+            android:gravity="center" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:id="@+id/textofecha"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Fecha:"
+            android:textAlignment="center"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/edittextfechaa"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="Seleccionar"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:padding="10dp" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/botoninscribirsealevento"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_weight="1"
-        android:text="crear el evento"
+        android:text="Crear el evento"
         android:textSize="30dp"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="@color/naranja"
-
-        ></Button>
-
+        android:backgroundTint="@color/naranja" />
 </LinearLayout>
