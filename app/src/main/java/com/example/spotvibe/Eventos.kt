@@ -57,7 +57,10 @@ class Eventos : AppCompatActivity() {
                 putString("nombre", selectedEvent.nombre)
                 putString("autor", selectedEvent.autor)
                 putString("imagenUrl", selectedEvent.imagenUrl)
-                putString("distancia", selectedEvent.cantidadInscritos.toString())
+                putString("Localizacion", selectedEvent.localizacion)
+                //putString
+                //putString("cantidadInscritos", selectedEvent.cantidadInscritos.toString())
+                //putString("cantidadInscritos", selectedEvent.cantidadInscritos.toString())
 
             }
             val intent = Intent(this, Mapa::class.java)

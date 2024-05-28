@@ -2,19 +2,12 @@ package com.example.spotvibe
 
 import android.app.UiModeManager
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.StrictMode
 import android.preference.PreferenceManager
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.example.spotvibe.databinding.ActivityMapaBinding
 import org.osmdroid.api.IMapController
 import org.osmdroid.bonuspack.routing.OSRMRoadManager
@@ -28,12 +21,11 @@ import org.osmdroid.views.overlay.MapEventsOverlay
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Polyline
 import org.osmdroid.views.overlay.TilesOverlay
-import java.util.ArrayList
 
 class Mapa : AppCompatActivity() {
 
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
-    private lateinit var map : MapView
+    private lateinit var map: MapView
     private lateinit var binding: ActivityMapaBinding
     private var longPressedMarker: Marker? = null
     private var tappedMarker: Marker? = null
@@ -52,12 +44,13 @@ class Mapa : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
         val bundle = intent.getBundleExtra("informacionLugar")
 
-            val nombre = bundle?.getString("nombre")
-            val autor = bundle?.getString("autor")
-            val foto = bundle?.getString("foto")
-            val distanciaTexto = bundle?.getString("distanciaTexto")
-            val latitud = bundle?.getDouble("latitud")?: 0.0
-            val longitud = bundle?.getDouble("longitud")?: 0.0
+        val nombre = bundle?.getString("nombre")
+        val autor = bundle?.getString("autor")
+        val imagenUrl = bundle?.getString("imagenUrl")
+        val localizacion = bundle?.getString("Localizacion") ?: ""
+        val partes: Array<String> = localizacion.split(",").toTypedArray()
+        val latitud: Double = partes[0].toDoubleOrNull() ?: 0.0
+        val longitud: Double = partes[1].toDoubleOrNull() ?: 0.0
 
         val markerPoint1 = GeoPoint(latitud, longitud)
         val marker1 = Marker(map)
@@ -71,6 +64,7 @@ class Mapa : AppCompatActivity() {
         map.overlays.add(marker1)
         map.overlays.add(createOverlayEvents(markerPoint1))
     }
+
     val startPoint = GeoPoint(4.62866, -74.06460);
     override fun onResume() {
         super.onResume()
@@ -79,14 +73,20 @@ class Mapa : AppCompatActivity() {
         mapController.setZoom(18.0)
         mapController.setCenter(this.startPoint)
         val uiManager = getSystemService(UI_MODE_SERVICE) as UiModeManager
-        if(uiManager.nightMode == UiModeManager.MODE_NIGHT_YES)
+        if (uiManager.nightMode == UiModeManager.MODE_NIGHT_YES)
             map.overlayManager.tilesOverlay.setColorFilter(TilesOverlay.INVERT_COLORS)
     }
+
     override fun onPause() {
         super.onPause()
         map.onPause()
     }
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         val permissionsToRequest = ArrayList<String>()
         var i = 0
@@ -98,15 +98,18 @@ class Mapa : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this,
                 permissionsToRequest.toTypedArray(),
-                REQUEST_PERMISSIONS_REQUEST_CODE)
+                REQUEST_PERMISSIONS_REQUEST_CODE
+            )
         }
     }
+
     private fun createOverlayEvents(markerPoint1: GeoPoint): MapEventsOverlay {
         val overlayEventos = MapEventsOverlay(object : MapEventsReceiver {
             override fun singleTapConfirmedHelper(p: GeoPoint): Boolean {
                 tapOnOnMap(p, markerPoint1)
                 return true
             }
+
             override fun longPressHelper(p: GeoPoint): Boolean {
                 return false
             }
@@ -116,9 +119,11 @@ class Mapa : AppCompatActivity() {
 
     private fun tapOnOnMap(p: GeoPoint, markerPoint1: GeoPoint) {
         tappedMarker?.let { map.overlays.remove(it) }
-        tappedMarker = createMarker(p, "Posicion actual", null, R.drawable.sharp_add_location_24, markerPoint1)
+        tappedMarker =
+            createMarker(p, "Posicion actual", null, R.drawable.sharp_add_location_24, markerPoint1)
         tappedMarker?.let { map.overlays.add(it) }
     }
+
     private fun createMarker(
         p: GeoPoint,
         title: String?,
