@@ -30,17 +30,15 @@
             android:background="@drawable/orangebtnradius"
             android:layout_gravity="center_vertical"
             />
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Search Here"
+            android:text="Search "
             android:background="@android:color/transparent"
             android:gravity="start"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
             android:textSize="15dp"
             android:paddingLeft="20dp"
-            android:inputType="text"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.85"
 
@@ -70,7 +68,7 @@
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wilson!"
+                android:text="Usuario"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold"/>
             <View
@@ -98,7 +96,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Free User"
+                    android:text="User"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
 
                 <TextView
@@ -139,14 +137,7 @@
             android:textStyle="bold"
             android:layout_gravity="center_vertical"
             />
-        <ImageView
-            android:id="@+id/filter"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            tools:srcCompat="@drawable/ic_filter"
-            android:layout_weight="0.30"
-            android:layout_gravity="center_vertical"
-            />
+
 
 
     </LinearLayout>
