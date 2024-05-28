@@ -31,6 +31,7 @@ class DetallesEvento : AppCompatActivity() {
         val cantidadParticipantes = findViewById<TextView>(R.id.textviewcantidadparticipantes)
         val cantidadInscritos = findViewById<TextView>(R.id.textviewcantidadinscritos)
         val estadoEvento = findViewById<TextView>(R.id.textviewestado)
+        val fechaEvento = findViewById<TextView>(R.id.textviewfecha)
         val imagenDetalle = findViewById<ImageView>(R.id.imageView3)
         val botoninscribirse = findViewById<Button>(R.id.botoninscribirsealevento)
 
@@ -41,6 +42,7 @@ class DetallesEvento : AppCompatActivity() {
         val participantesEvento = intent.getStringExtra("cantidadParticipantes")
         val inscritosEvento = intent.getIntExtra("cantidadInscritos", 0)
         val estadoEventoStr = intent.getStringExtra("estadoEvento")
+        val fechaEventoStr = intent.getStringExtra("fechaEvento")
         val eventId = intent.getStringExtra("eventId")
 
         eventodetalle.text = nombreEvento
@@ -49,6 +51,7 @@ class DetallesEvento : AppCompatActivity() {
         cantidadParticipantes.text = "Participantes: $participantesEvento"
         cantidadInscritos.text = "Inscritos: $inscritosEvento"
         estadoEvento.text = "Estado: $estadoEventoStr"
+        fechaEvento.text = "Fecha: $fechaEventoStr"
 
         if (!fotoEvento.isNullOrEmpty()) {
             Glide.with(this).load(fotoEvento).into(imagenDetalle)
@@ -92,6 +95,7 @@ class DetallesEvento : AppCompatActivity() {
         val participantesEvento = intent.getStringExtra("cantidadParticipantes")
         val inscritosEvento = intent.getIntExtra("cantidadInscritos", 0)
         val estadoEventoStr = intent.getStringExtra("estadoEvento")
+        val fechaEventoStr = intent.getStringExtra("fechaEvento")
 
         if (currentUser != null) {
             val userId = currentUser.uid
@@ -104,7 +108,8 @@ class DetallesEvento : AppCompatActivity() {
                 "detalles" to detallesEvento,
                 "cantidadParticipantes" to participantesEvento,
                 "cantidadInscritos" to inscritosEvento,
-                "estado" to estadoEventoStr
+                "estado" to estadoEventoStr,
+                "fecha" to fechaEventoStr
             )
 
             userEventRef.setValue(userEventMap).addOnCompleteListener { task ->

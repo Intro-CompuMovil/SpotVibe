@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -70,6 +69,7 @@ class Busqueda : AppCompatActivity() {
                 intent.putExtra("cantidadParticipantes", evento.cantidadParticipantes)
                 intent.putExtra("cantidadInscritos", evento.cantidadInscritos)
                 intent.putExtra("estadoEvento", evento.estado)
+                intent.putExtra("fechaEvento", evento.fecha)
                 startActivity(intent)
             }
         })
@@ -83,7 +83,9 @@ class Busqueda : AppCompatActivity() {
                     eventList.clear()
                     for (eventSnapshot in snapshot.children) {
                         val event = eventSnapshot.getValue(Evento::class.java)
-                        event?.let { eventList.add(it) }
+                        if (event?.estado == "ACEPTADA") {
+                            eventList.add(event)
+                        }
                     }
                     eventAdapter.updateList(eventList)
                 }

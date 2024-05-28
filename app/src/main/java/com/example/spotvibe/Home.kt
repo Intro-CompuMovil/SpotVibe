@@ -128,6 +128,7 @@ class Home : AppCompatActivity() {
                 intent.putExtra("cantidadParticipantes", evento.cantidadParticipantes)
                 intent.putExtra("cantidadInscritos", evento.cantidadInscritos)
                 intent.putExtra("estadoEvento", evento.estado)
+                intent.putExtra("fechaEvento", evento.fecha)
                 startActivity(intent)
             }
         })
