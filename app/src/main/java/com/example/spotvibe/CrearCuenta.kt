@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
@@ -168,13 +169,27 @@ class CrearCuenta : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(baseContext, "User account created successfully.", Toast.LENGTH_SHORT).show()
-                            // Redirect to another activity if needed
+                            // Obtener y guardar el token FCM
+                            FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val token = task.result
+                                    saveTokenToDatabase(userId, token)
+                                }
+                            }
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         } else {
                             Toast.makeText(baseContext, "Failed to save profile image URL.", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
         }
+    }
+
+    private fun saveTokenToDatabase(userId: String, token: String) {
+        val userRef = database.child("users").child(userId)
+        userRef.child("token").setValue(token)
     }
 
     private fun setupImageView() {
