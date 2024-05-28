@@ -1,5 +1,6 @@
 package com.example.spotvibe
 
+import android.app.DatePickerDialog
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -17,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
 import java.util.*
 
 class ModificaEvento : AppCompatActivity() {
@@ -31,6 +33,7 @@ class ModificaEvento : AppCompatActivity() {
     private lateinit var descripcionevento: EditText
     private lateinit var cantidadparticipantes: EditText
     private lateinit var imagenevento: ImageView
+    private lateinit var fechaevento: EditText
 
     private val PICK_IMAGE_REQUEST = 1
     private var imageUri: Uri? = null
@@ -47,6 +50,7 @@ class ModificaEvento : AppCompatActivity() {
         descripcionevento = findViewById(R.id.edittextDescripcionEvento)
         cantidadparticipantes = findViewById(R.id.edittextCantidadTotalParticipantes)
         imagenevento = findViewById(R.id.imageVieweventos)
+        fechaevento = findViewById(R.id.edittextFechaEvento)
         val botonmodificar = findViewById<Button>(R.id.botoncambiarevento)
         val botonelimimnar = findViewById<Button>(R.id.botoneliminarevento)
 
@@ -57,6 +61,7 @@ class ModificaEvento : AppCompatActivity() {
         val descripcionEvento = intent.getStringExtra("detalleEvento")
         val cantidadParticipantes = intent.getStringExtra("cantidadParticipantes")
         val fotoEvento = intent.getStringExtra("fotoEvento")
+        val fechaEvento = intent.getStringExtra("fechaEvento")
         originalFotoUrl = fotoEvento
 
         // Set the values to the views
@@ -64,6 +69,7 @@ class ModificaEvento : AppCompatActivity() {
         autorevento.setText(autorEvento)
         descripcionevento.setText(descripcionEvento)
         cantidadparticipantes.setText(cantidadParticipantes)
+        fechaevento.setText(fechaEvento)
 
         // Load the image using Glide
         Glide.with(this)
@@ -77,6 +83,11 @@ class ModificaEvento : AppCompatActivity() {
             startActivityForResult(intent, PICK_IMAGE_REQUEST)
         }
 
+        // Add click listener to the date field to open DatePickerDialog
+        fechaevento.setOnClickListener {
+            showDatePickerDialog()
+        }
+
         botonmodificar.setOnClickListener {
             updateEvent()
         }
@@ -84,6 +95,23 @@ class ModificaEvento : AppCompatActivity() {
         botonelimimnar.setOnClickListener {
             deleteEvent()
         }
+    }
+
+    private fun showDatePickerDialog() {
+        val calendar = Calendar.getInstance()
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(year, month, dayOfMonth)
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                fechaevento.setText(dateFormat.format(selectedDate.time))
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -99,6 +127,7 @@ class ModificaEvento : AppCompatActivity() {
         val updatedAutor = autorevento.text.toString()
         val updatedDescripcion = descripcionevento.text.toString()
         val updatedCantidadParticipantes = cantidadparticipantes.text.toString()
+        val updatedFecha = fechaevento.text.toString()
 
         val eventUpdates = hashMapOf<String, Any?>()
 
@@ -113,6 +142,9 @@ class ModificaEvento : AppCompatActivity() {
         }
         if (updatedCantidadParticipantes != intent.getStringExtra("cantidadParticipantes")) {
             eventUpdates["cantidadParticipantes"] = updatedCantidadParticipantes
+        }
+        if (updatedFecha != intent.getStringExtra("fechaEvento")) {
+            eventUpdates["fechaEvento"] = updatedFecha
         }
 
         if (imageUri != null) {
