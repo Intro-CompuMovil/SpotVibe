@@ -239,10 +239,33 @@ class Perfil : AppCompatActivity() {
     }
 
     private fun logoutUser() {
-        auth.signOut()
-        val intent = Intent(this, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val userRef = database.child("users").child(userId)
+
+            // Elimina el token del usuario
+            userRef.child("token").removeValue().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Cierra la sesión después de eliminar el token
+                    auth.signOut()
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                } else {
+                    // Maneja el caso donde la eliminación del token falla
+                    Toast.makeText(this, "Error al cerrar sesión. Inténtalo de nuevo.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            // Si el currentUser es null, cierra sesión directamente
+            auth.signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
     }
+
 }
