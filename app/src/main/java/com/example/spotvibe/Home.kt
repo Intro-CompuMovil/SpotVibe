@@ -102,7 +102,9 @@ class Home : AppCompatActivity() {
                     for (eventSnapshot in snapshot.children) {
                         val eventId = eventSnapshot.key ?: ""
                         val event = eventSnapshot.getValue(Evento::class.java)?.copy(id = eventId)
-                        event?.let { eventList.add(it) }
+                        if (event?.estado == "ACEPTADA") {
+                            eventList.add(event)
+                        }
                     }
                     eventAdapter.updateList(eventList)
                 }
@@ -114,12 +116,9 @@ class Home : AppCompatActivity() {
         })
     }
 
-
-
     private fun selecciondeEvento() {
         eventAdapter.setOnItemClickListener(object : Eventadapter.OnItemClickListener {
             override fun onItemClick(evento: Evento) {
-
                 val intent = Intent(this@Home, DetallesEvento::class.java)
                 intent.putExtra("eventId", evento.id)
                 intent.putExtra("nombreEvento", evento.nombre)
@@ -130,7 +129,6 @@ class Home : AppCompatActivity() {
                 intent.putExtra("cantidadInscritos", evento.cantidadInscritos)
                 intent.putExtra("estadoEvento", evento.estado)
                 startActivity(intent)
-
             }
         })
     }

@@ -13,20 +13,11 @@
         android:layout_height="140dp"
         android:background="@color/naranja" />
 
-    <ImageView
-        android:id="@+id/back_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_back"
-        />
-
     <TextView
         android:id="@+id/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/back_icon"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:text="REGISTERED EVENTS"
         android:textColor="@color/white"
@@ -38,6 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Encabezado"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
         android:background="@color/fondo"
         />
 
