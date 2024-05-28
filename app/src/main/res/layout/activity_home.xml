@@ -70,7 +70,7 @@
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wilson!"
+                android:text="Usuario"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textStyle="bold"/>
             <View
@@ -98,7 +98,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Free User"
+                    android:text="Usuario"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
 
                 <TextView
